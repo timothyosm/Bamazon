@@ -1,7 +1,7 @@
 var inquirer = require('inquirer');
 var mysql = require('mysql');
 var connection = mysql.createConnection({
-	host: "127.0.0.1",
+	host: "localhost",
 	port: 3306,
 	user: "root",
 	password: "Password.1",
@@ -52,12 +52,12 @@ function showInventory() {
 		console.log('...................\n');
 		var strOut = '';
 		for (var i = 0; i < data.length; i++) {
-			strOut = '';
-			strOut += 'Item ID: ' + data[i].item_id;
-			strOut += 'Product Name: ' + data[i].product_name;
-			strOut += 'Department: ' + data[i].department_name;
-			strOut += 'Price: $' + data[i].price;
-			strOut += 'Quantity: ' + data[i].stock_quantity + '\n';
+			strOut = '' + ' '
+			strOut += 'Item ID: ' + data[i].item_id+ ' '
+			strOut += 'Product Name: ' + data[i].product_name+ ' '
+			strOut += 'Department: ' + data[i].department_name+ ' '
+			strOut += 'Price: $' + data[i].price+ ' '
+			strOut += 'Quantity: ' + data[i].stock_quantity + '\n'+ ' '
 			console.log(strOut);
 		}
 		console.log("---------------------------------------------------------------------\n");
@@ -73,12 +73,12 @@ function showLowInventory() {
 		console.log('................................\n');
 		var strOut = '';
 		for (var i = 0; i < data.length; i++) {
-			strOut = '';
-			strOut += 'Item ID: ' + data[i].item_id;
-			strOut += 'Product Name: ' + data[i].product_name;
-			strOut += 'Department: ' + data[i].department_name;
-			strOut += 'Price: $' + data[i].price;
-			strOut += 'Quantity: ' + data[i].stock_quantity + '\n';
+			strOut = '' + ' '
+			strOut += 'Item ID: ' + data[i].item_id + ' '
+			strOut += 'Product Name: ' + data[i].product_name + ' '
+			strOut += 'Department: ' + data[i].department_name + ' '
+			strOut += 'Price: $' + data[i].price + ' '
+			strOut += 'Quantity: ' + data[i].stock_quantity + '\n' + ' '
 			console.log(strOut);
 		}
 		console.log("---------------------------------------------------------------------\n");
@@ -108,19 +108,19 @@ function validateNumber(value) {
 
 function addInventory() {
 	inquirer.prompt([{
-			type: 'input',
-			name: 'item_id',
-			message: 'Please enter the Item ID for stock_count update.',
-			validate: validateNumber,
-			filter: Number
-		},
-		{
-			type: 'input',
-			name: 'quantity',
-			message: 'How many would you like to add?',
-			validate: validateNumber,
-			filter: Number
-		}
+		type: 'input',
+		name: 'item_id',
+		message: 'Please enter the Item ID for stock_count update.',
+		validate: validateNumber,
+		filter: Number
+	},
+	{
+		type: 'input',
+		name: 'quantity',
+		message: 'How many would you like to add?',
+		validate: validateNumber,
+		filter: Number
+	}
 	]).then(function (input) {
 		var item = input.item_id;
 		var addQuantity = input.quantity;
@@ -149,27 +149,27 @@ function addInventory() {
 
 function createNewProduct() {
 	inquirer.prompt([{
-			type: 'input',
-			name: 'product_name',
-			message: 'Please enter the new product name.',
-		},
-		{
-			type: 'input',
-			name: 'department_name',
-			message: 'Which department does the new product belong to?',
-		},
-		{
-			type: 'input',
-			name: 'price',
-			message: 'What is the price per unit?',
-			validate: validateNumber
-		},
-		{
-			type: 'input',
-			name: 'stock_quantity',
-			message: 'How many items are in stock?',
-			validate: validateNumber
-		}
+		type: 'input',
+		name: 'product_name',
+		message: 'Please enter the new product name.',
+	},
+	{
+		type: 'input',
+		name: 'department_name',
+		message: 'Which department does the new product belong to?',
+	},
+	{
+		type: 'input',
+		name: 'price',
+		message: 'What is the price per unit?',
+		validate: validateNumber
+	},
+	{
+		type: 'input',
+		name: 'stock_quantity',
+		message: 'How many items are in stock?',
+		validate: validateNumber
+	}
 	]).then(function (input) {
 		console.log('Adding New Item: \n    product_name = ' + input.product_name + '\n' +
 			'    department_name = ' + input.department_name + '\n' +

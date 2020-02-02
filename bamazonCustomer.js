@@ -1,7 +1,7 @@
 var inquirer = require('inquirer');
 var mysql = require('mysql');
 var connection = mysql.createConnection({
-	host: "127.0.0.1",
+	host: "localhost",
 	port: 3306,
 	user: "root",
 	password: "Password.1",
@@ -19,19 +19,19 @@ function validateInput(value) {
 }
 function promptUserPurchase() {
 	inquirer.prompt([{
-			type: 'input',
-			name: 'item_id',
-			message: 'Please enter the Item ID which you would like to purchase.',
-			validate: validateInput,
-			filter: Number
-		},
-		{
-			type: 'input',
-			name: 'quantity',
-			message: 'How many do you need?',
-			validate: validateInput,
-			filter: Number
-		}
+		type: 'input',
+		name: 'item_id',
+		message: 'Please enter the Item ID which you would like to purchase.',
+		validate: validateInput,
+		filter: Number
+	},
+	{
+		type: 'input',
+		name: 'quantity',
+		message: 'How many do you need?',
+		validate: validateInput,
+		filter: Number
+	}
 	]).then(function (input) {
 		var item = input.item_id;
 		var quantity = input.quantity;
@@ -73,11 +73,11 @@ function displayInventory() {
 		console.log('...................\n');
 		var strOut = '';
 		for (var i = 0; i < data.length; i++) {
-			strOut = '';
-			strOut += 'Item ID: ' + data[i].item_id;
-			strOut += 'Product Name: ' + data[i].product_name;
-			strOut += 'Department: ' + data[i].department_name;
-			strOut += 'Price: $' + data[i].price + '\n';
+			strOut = '' + ' '
+			strOut += 'Item ID: ' + data[i].item_id + ' '
+			strOut += 'Product Name: ' + data[i].product_name + ' '
+			strOut += 'Department: ' + data[i].department_name + ' '
+			strOut += 'Price: $' + data[i].price + '\n' + ' '
 			console.log(strOut);
 		}
 		console.log("---------------------------------------------------------------------\n");
