@@ -1,4 +1,8 @@
 An Amazon-like storefront with MySQL and Node.
 
-![](bamazonCustomer.png)
-![](bamazonSupervisor.png)
+
+Customer:
+![](CustomerGIf.gif)
+
+Supervisor:
+![](SupervisorGIf.gif)
